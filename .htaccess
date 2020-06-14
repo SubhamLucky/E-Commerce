@@ -4,5 +4,7 @@ RewriteEngine On
 RewriteBase /
 #RewriteCond %{HTTP_HOST} ^domain.com$ [NC,OR]
 #RewriteCond %{HTTP_HOST} ^www.domain.com$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !php/
 RewriteRule (.*) /php/$1 [L]
