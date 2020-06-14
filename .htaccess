@@ -1,10 +1,19 @@
 Options +FollowSymLinks -MultiViews
 # Turn mod_rewrite on
-RewriteEngine On
-RewriteBase /
+#RewriteEngine On
+#RewriteBase /
 #RewriteCond %{HTTP_HOST} ^domain.com$ [NC,OR]
 #RewriteCond %{HTTP_HOST} ^www.domain.com$
+#RewriteCond %{REQUEST_URI} !php/
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule (.*) /php/$1 [L]
+
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !.png$ [NC]
+#RewriteCond %{REQUEST_URI} !.html$ [NC]
+#RewriteCond %{REQUEST_URI} !.php$ [NC]
+RewriteCond %{REQUEST_URI} !.css$ [NC]
+RewriteCond %{REQUEST_URI} !.jpg$ [NC]
 RewriteCond %{REQUEST_URI} !php/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule (.*) /php/$1 [L]
